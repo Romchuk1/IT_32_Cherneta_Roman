@@ -1,0 +1,40 @@
+<section class="products">
+
+  <div class="products-header">
+
+    <div>
+      <p class="subtitle">НАШ АСОРТИМЕНТ</p>
+      <h2>Популярні товари</h2>
+    </div>
+
+    @if (message) {
+      <div class="message">
+        {{ message }}
+      </div>
+    }
+
+  </div>
+
+  <div class="product-grid">
+
+    <app-product-card
+      [name]="'Ноутбук ASUS'"
+      [price]="25000"
+      (buyClicked)="showMessage()">
+    </app-product-card>
+
+    <app-product-card
+      [name]="'Смартфон Samsung'"
+      [price]="18000"
+      (buyClicked)="showMessage()">
+    </app-product-card>
+
+    <app-product-card
+      [name]="'Навушники Sony'"
+      [price]="4500"
+      (buyClicked)="showMessage()">
+    </app-product-card>
+
+  </div>
+
+</section>
