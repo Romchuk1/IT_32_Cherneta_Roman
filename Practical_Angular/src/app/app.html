@@ -1,0 +1,52 @@
+<div class="container">
+  <h1>Студенти групи</h1>
+
+  <p class="counter">Всього студентів: {{ students.length }}</p>
+
+  <div class="form-card">
+    <h3>Додати нового студента</h3>
+    
+    <div class="field">
+      <label>Ім'я:</label>
+      <input type="text" [(ngModel)]="newStudent.name" placeholder="Введіть ім'я">
+    </div>
+
+    <div class="field">
+      <label>Вік:</label>
+      <input type="number" [(ngModel)]="newStudent.age" placeholder="Введіть вік">
+    </div>
+
+    <div class="field">
+      <label>Середня оцінка:</label>
+      <input type="number" [(ngModel)]="newStudent.grade" placeholder="Введіть оцінку (1-12)">
+    </div>
+
+    <button 
+      (click)="addStudent()" 
+      [disabled]="!newStudent.name.trim() || newStudent.age === null || newStudent.grade === null">
+      Додати студента
+    </button>
+  </div>
+
+  <div class="students-list">
+    <div 
+      class="student-card" 
+      *ngFor="let student of students; let i = index"
+      [ngClass]="{
+        'high-grade': student.grade! >= 10,
+        'medium-grade': student.grade! >= 7 && student.grade! <= 9,
+        'low-grade': student.grade! >= 1 && student.grade! <= 6
+      }">
+      
+      <h3>{{ student.name }}</h3>
+      <p>Вік: {{ student.age }}</p>
+      <p>Середня оцінка: {{ student.grade }}</p>
+
+      <p class="excellent-badge" *ngIf="student.grade! >= 10">
+        ★ Відмінний результат
+      </p>
+
+      <button class="delete-btn" (click)="deleteStudent(i)">Видалити</button>
+    </div>
+  </div>
+</div>
