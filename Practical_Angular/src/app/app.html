@@ -1,0 +1,50 @@
+<div class="container">
+
+  <h1>Каталог фільмів</h1>
+
+  <div class="form">
+    <h2>Додати фільм</h2>
+
+    <input
+      type="text"
+      placeholder="Назва фільму"
+      [(ngModel)]="title"
+    >
+
+    <input
+      type="number"
+      placeholder="Рік"
+      [(ngModel)]="year"
+    >
+
+    <input
+      type="number"
+      placeholder="Рейтинг"
+      [(ngModel)]="rating"
+    >
+
+    <button (click)="addMovie()">Додати фільм</button>
+  </div>
+
+  <div class="movies">
+
+    <div class="movie" *ngFor="let movie of movies">
+
+      <h2>{{ movie.title }}</h2>
+
+      <p>Рік: {{ movie.year }}</p>
+
+      <p>Рейтинг: {{ movie.rating }}</p>
+
+      <button
+        class="delete"
+        (click)="removeMovie(movie.id)"
+      >
+        Видалити
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
