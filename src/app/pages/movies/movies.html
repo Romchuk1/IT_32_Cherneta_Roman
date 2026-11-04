@@ -1,0 +1,13 @@
+<h1>Список фільмів</h1>
+
+<div *ngFor="let movie of movies">
+  <h2>{{ movie.title }}</h2>
+
+  <p>Режисер: {{ movie.director }}</p>
+
+  <a [routerLink]="['/movie', movie.id]">
+    Детальніше
+  </a>
+
+  <hr>
+</div>
